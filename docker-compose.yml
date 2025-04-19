@@ -1,0 +1,12 @@
+services:
+  web:
+    container_name: golang-hello
+    build: hello
+    ports: 
+      - "8080:8080"
+    # volumes:
+    #   - .:/app
+    volumes:
+      - ./hello:/app
+    # Use an entrypoint script that rebuilds the app when the container starts
+    command: sh -c "go build -o main . && ./main"
